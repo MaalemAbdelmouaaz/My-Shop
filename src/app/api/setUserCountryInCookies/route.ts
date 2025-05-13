@@ -15,9 +15,10 @@ export async function POST(request: Request) {
       status: 200,
     });
     response.cookies.set("userCountry", JSON.stringify(userCountry), {
-      httpOnly: true, // Cookie cannot be accessed by JavaScript
+      httpOnly: false, // Allow JavaScript access to cookie
       secure: process.env.NODE_ENV === "production", // Secure cookie in production
       sameSite: "lax", // Helps protect against CSRF attacks
+      path: "/", // Ensure cookie is available across the site
     });
 
     return response;

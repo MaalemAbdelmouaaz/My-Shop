@@ -1,0 +1,31 @@
+{
+  "common": {
+    "ship_to": "Expédier à",
+    "language": "Langue",
+    "currency": "Devise",
+    "search": "Rechercher",
+    "cart": "Panier",
+    "account": "Compte"
+  },
+  "auth": {
+    "sign_in": "Se connecter",
+    "sign_up": "S'inscrire",
+    "forgot_password": "Mot de passe oublié ?"
+  },
+  "product": {
+    "add_to_cart": "Ajouter au panier",
+    "buy_now": "Acheter maintenant",
+    "out_of_stock": "Rupture de stock",
+    "description": "Description",
+    "specifications": "Spécifications",
+    "reviews": "Avis"
+  },
+  "checkout": {
+    "shipping_address": "Adresse de livraison",
+    "payment_method": "Mode de paiement",
+    "order_summary": "Récapitulatif de la commande",
+    "subtotal": "Sous-total",
+    "shipping": "Livraison",
+    "total": "Total"
+  }
+} 

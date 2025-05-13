@@ -120,7 +120,9 @@ const handleProductCreate = async (
     store: { connect: { id: storeId } },
     category: { connect: { id: product.categoryId } },
     subCategory: { connect: { id: product.subCategoryId } },
-    offerTag: { connect: { id: product.offerTagId } },
+    offerTag: product.offerTagId
+      ? { connect: { id: product.offerTagId } }
+      : undefined,
     brand: product.brand,
     specs: {
       create: product.product_specs.map((spec) => ({

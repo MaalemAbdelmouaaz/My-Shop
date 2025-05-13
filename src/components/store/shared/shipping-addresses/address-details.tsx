@@ -56,6 +56,9 @@ const AddressDetails: FC<AddressDetailsProps> = ({
   // State for selected country
   const [country, setCountry] = useState<string>("Afghanistan");
 
+  // State for selected country value
+  const [selectedCountryValue, setSelectedCountryValue] = useState<SelectMenuOption | null>(null);
+
   // Form hook for managing form state and validation
   const form = useForm<z.infer<typeof ShippingAddressSchema>>({
     mode: "onChange", // Form validation mode
@@ -85,7 +88,7 @@ const AddressDetails: FC<AddressDetailsProps> = ({
         ...data,
         address2: data.address2 || "",
       });
-      handleCountryChange(data?.country.name);
+      handleCountryChange(data?.country as SelectMenuOption);
     }
   }, [data, form]);
 
@@ -132,13 +135,30 @@ const AddressDetails: FC<AddressDetailsProps> = ({
     }
   };
 
-  const handleCountryChange = (name: string) => {
-    const country = countries.find((c) => c.name === name);
-    if (country) {
-      form.setValue("countryId", country.id);
+  // Effect to handle country changes
+  useEffect(() => {
+    if (selectedCountryValue) {
+      const dbCountry = countries.find(
+        (c) => c.code.toLowerCase() === selectedCountryValue.code.toLowerCase()
+      );
+      
+      if (dbCountry) {
+        form.setValue("countryId", dbCountry.id);
+        setCountry(selectedCountryValue.name);
+      }
     }
-    setCountry(name);
+  }, [selectedCountryValue, countries, form]);
+
+  const handleCountryChange = (value: SelectMenuOption) => {
+    setSelectedCountryValue(value);
   };
+
+  // Effect to set initial country
+  useEffect(() => {
+    if (data?.country) {
+      setSelectedCountryValue(data.country as SelectMenuOption);
+    }
+  }, [data]);
 
   return (
     <div>
@@ -202,12 +222,8 @@ const AddressDetails: FC<AddressDetailsProps> = ({
                         id={"countries"}
                         open={isOpen}
                         onToggle={() => setIsOpen((prev) => !prev)}
-                        onChange={(val) => handleCountryChange(val)}
-                        selectedValue={
-                          (countries.find(
-                            (c) => c.name === country
-                          ) as SelectMenuOption) || countries[0]
-                        }
+                        onChange={handleCountryChange}
+                        selectedValue={selectedCountryValue}
                       />
                     </FormControl>
                     <FormMessage />

@@ -6,14 +6,18 @@
     "dev": "next dev",
     "build": "prisma generate && next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
+  },
+  "prisma": {
+    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
   },
   "dependencies": {
     "@clerk/nextjs": "^6.9.6",
     "@elastic/elasticsearch": "^8.16.2",
     "@hookform/resolvers": "^3.6.0",
     "@paypal/react-paypal-js": "^8.7.0",
-    "@prisma/client": "^5.15.0",
+    "@prisma/client": "^6.7.0",
     "@radix-ui/react-accordion": "^1.1.2",
     "@radix-ui/react-alert-dialog": "^1.0.5",
     "@radix-ui/react-aspect-ratio": "^1.0.3",
@@ -57,7 +61,7 @@
     "cmdk": "^1.0.0",
     "colorthief": "^2.4.0",
     "cookies-next": "^4.3.0",
-    "date-fns": "^4.1.0",
+    "date-fns": "^3.6.0",
     "dompurify": "^3.1.7",
     "embla-carousel-react": "^8.1.5",
     "flag-icons": "^7.2.3",
@@ -91,7 +95,7 @@
     "social-logos": "^3.1.8",
     "sonner": "^1.5.0",
     "stripe": "^17.4.0",
-    "svix": "^1.24.0",
+    "svix": "^1.65.0",
     "swiper": "^11.1.15",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7",
@@ -109,8 +113,14 @@
     "eslint": "^8",
     "eslint-config-next": "14.2.4",
     "postcss": "^8",
-    "prisma": "^5.15.0",
+    "prisma": "^6.7.0",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
-  }
+  },
+  "trustedDependencies": [
+    "@clerk/shared",
+    "@prisma/client",
+    "@prisma/engines",
+    "prisma"
+  ]
 }

@@ -7,7 +7,7 @@ export default function ProductWatch({ productId }: { productId: string }) {
   const [socket, setSocket] = useState<WebSocket | null>(null);
 
   useEffect(() => {
-    const ws = new WebSocket(`wss:dour-lying-juniper.glitch.me/${productId}`);
+    const ws = new WebSocket(`wss:lean-inky-hadrosaurus.glitch.me/${productId}`);
     setSocket(ws);
 
     ws.onmessage = (event) => {

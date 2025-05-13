@@ -8,8 +8,8 @@ export interface CountrySelectorProps {
   open: boolean;
   disabled?: boolean;
   onToggle: () => void;
-  onChange: (value: SelectMenuOption["name"]) => void;
-  selectedValue: SelectMenuOption;
+  onChange: (value: SelectMenuOption) => void;
+  selectedValue: SelectMenuOption | null;
 }
 
 export default function CountrySelector({
@@ -59,12 +59,18 @@ export default function CountrySelector({
           disabled={disabled}
         >
           <span className="truncate flex items-center">
-            <img
-              alt={`${selectedValue.name}`}
-              src={`https://purecatamphetamine.github.io/country-flag-icons/3x2/${selectedValue.code}.svg`}
-              className={"inline mr-2 h-4 rounded-sm"}
-            />
-            {selectedValue.name}
+            {selectedValue ? (
+              <>
+                <img
+                  alt={`${selectedValue.name}`}
+                  src={`https://purecatamphetamine.github.io/country-flag-icons/3x2/${selectedValue.code}.svg`}
+                  className={"inline mr-2 h-4 rounded-sm"}
+                />
+                {selectedValue.name}
+              </>
+            ) : (
+              <span>Select a country</span>
+            )}
           </span>
           <span
             className={`absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none ${
@@ -136,7 +142,7 @@ export default function CountrySelector({
                         id="listbox-option-0"
                         role="option"
                         onClick={() => {
-                          onChange(value.name);
+                          onChange(value);
                           setQuery("");
                           onToggle();
                         }}
@@ -150,7 +156,7 @@ export default function CountrySelector({
                         <span className="font-normal truncate">
                           {value.name}
                         </span>
-                        {value.name === selectedValue.name ? (
+                        {selectedValue && value.name === selectedValue.name ? (
                           <span className="text-blue-600 absolute inset-y-0 right-0 flex items-center pr-8">
                             <svg
                               className="h-5 w-5"

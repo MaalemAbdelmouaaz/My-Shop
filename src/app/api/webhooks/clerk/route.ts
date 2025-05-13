@@ -82,7 +82,7 @@ export async function POST(req: Request) {
     const client = await clerkClient();
     await client.users.updateUserMetadata(data.id, {
       privateMetadata: {
-        role: dbUser.role || "USER", // Default role to "USER" if not present in dbUser
+        role: dbUser.role, // Default role to "USER" if not present in dbUser
       },
     });
   }
