@@ -88,7 +88,13 @@ const AddressDetails: FC<AddressDetailsProps> = ({
         ...data,
         address2: data.address2 || "",
       });
-      handleCountryChange(data?.country as SelectMenuOption);
+      // Convert database country to SelectMenuOption format
+      if (data.country) {
+        setSelectedCountryValue({
+          name: data.country.name,
+          code: data.country.code
+        });
+      }
     }
   }, [data, form]);
 
@@ -144,7 +150,6 @@ const AddressDetails: FC<AddressDetailsProps> = ({
       
       if (dbCountry) {
         form.setValue("countryId", dbCountry.id);
-        setCountry(selectedCountryValue.name);
       }
     }
   }, [selectedCountryValue, countries, form]);
@@ -156,7 +161,10 @@ const AddressDetails: FC<AddressDetailsProps> = ({
   // Effect to set initial country
   useEffect(() => {
     if (data?.country) {
-      setSelectedCountryValue(data.country as SelectMenuOption);
+      setSelectedCountryValue({
+        name: data.country.name,
+        code: data.country.code
+      });
     }
   }, [data]);
 

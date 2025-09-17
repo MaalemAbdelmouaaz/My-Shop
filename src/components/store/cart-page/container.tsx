@@ -58,7 +58,7 @@ export default function CartContainer({
     <div>
       {cartItems && cartItems.length > 0 ? (
         <>
-          <div className="bg-[#f5f5f5] min-h-[calc(100vh-65px)] px-2">
+          <div className="bg-gray-light min-h-[calc(100vh-65px)] px-2">
             <div className="max-w-[1200px] mx-auto py-4 flex flex-col gap-y-4 lg:flex-row">
               <div className="min-w-0 flex-1">
                 {/* Cart header */}

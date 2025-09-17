@@ -29,9 +29,9 @@ export default function OfferLink({ offer }: { offer: OfferTag }) {
   return (
     <div
       className={cn(
-        "border text-sm px-1.5 w-fit py-1 rounded-lg cursor-pointer hover:border-orange-background",
-        {
-          "bg-[#ffebed] text-orange-background border-orange-background":
+                  "border text-sm px-1.5 w-fit py-1 rounded-lg cursor-pointer hover:border-purple-primary",
+          {
+            "bg-purple-light text-purple-primary border-purple-primary":
             offer.url === offerQuery,
         }
       )}

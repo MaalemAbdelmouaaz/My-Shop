@@ -2,6 +2,7 @@ import { CartItem } from "@prisma/client";
 import { ChevronRight, Truck } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { formatPrice } from "@/lib/currency";
 
 export default function CheckoutProductCard({
   product,
@@ -61,10 +62,10 @@ export default function CheckoutProductCard({
               <div className="font-bold w-full flex items-start justify-between">
                 <div className="flex items-center gap-x-2">
                   <span className="inline-block break-all">
-                    ${product.price.toFixed(2)} x {product.quantity}
+                    {formatPrice(product.price)} x {product.quantity}
                   </span>
                   {isDiscounted && (
-                    <span className="text-xs font-normal text-orange-background">
+                    <span className="text-xs font-normal text-purple-primary">
                       (Coupon applied)
                     </span>
                   )}
@@ -78,7 +79,7 @@ export default function CheckoutProductCard({
                     <Truck className="w-4 inline-block text-[#01a971]" />
                     <span className="text-[#01a971] ml-1">
                       {shippingFee
-                        ? `$${shippingFee.toFixed(2)}`
+                        ? formatPrice(shippingFee)
                         : "Free Delivery"}
                     </span>
                   </span>

@@ -68,15 +68,15 @@ const CartHeader: FC<Props> = ({
               <span className="leading-8 inline-flex p-0.5 cursor-pointer">
                 <span
                   className={cn(
-                    "leading-8 w-5 h-5 rounded-full bg-white border border-gray-300 flex items-center justify-center hover:border-orange-background",
+                    "leading-8 w-5 h-5 rounded-full bg-white border border-gray-300 flex items-center justify-center hover:border-purple-primary",
                     {
-                      "border-orange-background":
+                      "border-purple-primary":
                         cartLength > 0 && selectedLength === cartLength,
                     }
                   )}
                 >
                   {cartLength > 0 && selectedLength === cartLength && (
-                    <span className="bg-orange-background  w-5 h-5 rounded-full flex items-center justify-center">
+                    <span className="bg-purple-primary  w-5 h-5 rounded-full flex items-center justify-center">
                       <Check className="w-3.5 text-white mt-0.5" />
                     </span>
                   )}

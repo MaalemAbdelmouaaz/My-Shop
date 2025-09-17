@@ -22,9 +22,9 @@ const ReviewsFilters: FC<Props> = ({ filters, setFilters, setSort, stats }) => {
         {/* All */}
         <div
           className={cn(
-            "bg-[#f5f5f5] text-main-primary border border-transparent rounded-full cursor-pointer py-1.5 px-4 xxx",
+                          "bg-gray-light text-main-primary border border-transparent rounded-full cursor-pointer py-1.5 px-4 xxx",
             {
-              "bg-[#ffebed] text-[#fd384f] border-[#fd384f]":
+              "bg-purple-primary text-white border-purple-primary":
                 !rating && !hasImages,
             }
           )}
@@ -38,9 +38,9 @@ const ReviewsFilters: FC<Props> = ({ filters, setFilters, setSort, stats }) => {
         {/* Includes Pic */}
         <div
           className={cn(
-            "bg-[#f5f5f5] text-main-primary border border-transparent rounded-full cursor-pointer py-1.5 px-4",
+            "bg-gray-light text-main-primary border border-transparent rounded-full cursor-pointer py-1.5 px-4",
             {
-              "bg-[#ffebed] text-[#fd384f] border-[#fd384f]": hasImages,
+              "bg-purple-primary text-white border-purple-primary": hasImages,
             }
           )}
           onClick={() => setFilters({ ...filters, hasImages: true })}
@@ -52,9 +52,9 @@ const ReviewsFilters: FC<Props> = ({ filters, setFilters, setSort, stats }) => {
           <div
             key={r.rating}
             className={cn(
-              "bg-[#f5f5f5] text-main-primary border border-transparent rounded-full cursor-pointer py-1.5 px-4",
+              "bg-gray-light text-main-primary border border-transparent rounded-full cursor-pointer py-1.5 px-4",
               {
-                "bg-[#ffebed] text-[#fd384f] border-[#fd384f]":
+                "bg-purple-primary text-white border-purple-primary":
                   r.rating === rating,
               }
             )}

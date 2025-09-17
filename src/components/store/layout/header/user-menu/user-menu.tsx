@@ -51,11 +51,11 @@ export default async function UserMenu() {
           }
         )}
       >
-        <div className="relative left-2 mt-10 right-auto bottom-auto pt-2.5 text-[#222] p-0 text-sm z-40">
+        <div className="relative left-2 mt-10 right-auto bottom-auto pt-2.5 text-main-primary p-0 text-sm z-40">
           {/* Triangle */}
           <div className="w-0 h-0 absolute left-[149px] top-1 right-24 !border-l-[10px] !border-l-transparent !border-r-[10px] !border-r-transparent !border-b-[10px] border-b-white"></div>
           {/* Menu */}
-          <div className="rounded-3xl bg-white text-sm text-[#222] shadow-lg">
+          <div className="rounded-3xl bg-white text-sm text-main-primary shadow-lg">
             <div className="w-[305px]">
               <div className="pt-5 px-6 pb-0">
                 {user ? (

@@ -117,7 +117,7 @@ const OrderTableHeader: FC<Props> = ({
           />
           {/* Search icon */}
           <span className="-ml-[1px] rounded-r-md relative bg-white text-center">
-            <button className="rounded-r-md min-w-[52px] h-8 text-white bg-[linear-gradient(90deg,_#ff640e,_#ff3000)] grid place-items-center">
+            <button className="rounded-r-md min-w-[52px] h-8 text-white bg-gradient-to-r from-purple-primary to-purple-secondary grid place-items-center">
               <span className="text-2xl inline-block ">
                 <SearchIcon />
               </span>

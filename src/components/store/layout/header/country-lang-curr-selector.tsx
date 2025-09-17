@@ -80,15 +80,15 @@ export default function CountryLanguageCurrencySelector({
       {/* Trigger */}
       <div>
         <div className="flex items-center h-11 py-0 px-2 cursor-pointer">
-          <span className="mr-0.5  h-[33px] grid place-items-center">
-            <span className={`fi fi-${userCountry.code.toLowerCase()}`} />
+          <span className="mr-0.5 h-[90px] w-[90px] grid place-items-center">
+            <span className={`fi fi-${userCountry.code.toLowerCase()} text-4xl`} />
           </span>
           <div className="ml-1">
             <span className="block text-xs text-white leading-3 mt-2">
-              {userCountry.name}/{selectedLang.code.toUpperCase()}/
+              {/* {userCountry.name}/ */}{selectedLang.code.toUpperCase()}/
             </span>
             <b className="text-xs font-bold text-white ">
-              USD
+              DZD
               <span className="text-white scale-[60%] align-middle inline-block">
                 <ChevronDown />
               </span>
@@ -150,7 +150,7 @@ export default function CountryLanguageCurrencySelector({
                   {t("common.currency")}
                 </div>
                 <div className="relative mt-2 h-10 py-0 px-3 border-[1px] border-black/20 rounded-lg  flex items-center cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap">
-                  <div className="align-middle">USD (US Dollar)</div>
+                  <div className="align-middle">DZD (Algerian Dinar)</div>
                   <span className="absolute right-2">
                     <ChevronDown className="text-main-primary scale-75" />
                   </span>

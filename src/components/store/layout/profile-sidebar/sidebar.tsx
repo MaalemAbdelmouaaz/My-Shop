@@ -9,7 +9,7 @@ export default function ProfileSidebar() {
   const path_trim = path ? path.split("/")[0] : null;
   return (
     <div>
-      <div className="w-full p-4 text-xs text-[#999]">
+      <div className="w-full p-4 text-xs text-muted-foreground">
         <span>
           <Link href="/">Home</Link>
           <span className="mx-2">&gt;</span>
@@ -38,9 +38,9 @@ export default function ProfileSidebar() {
             <Link key={item.link} href={item.link}>
               <div
                 className={cn(
-                  "relative flex h-9 items-center text-sm px-4 cursor-pointer hover:bg-[#f5f5f5]",
+                  "relative flex h-9 items-center text-sm px-4 cursor-pointer hover:bg-gray-light",
                   {
-                    "bg-[#f5f5f5] user-menu-item":
+                    "bg-gray-light user-menu-item":
                       item.link &&
                       (pathname === item.link ||
                         (pathname.startsWith(item.link) &&

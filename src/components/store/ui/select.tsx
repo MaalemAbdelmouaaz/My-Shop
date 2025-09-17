@@ -52,7 +52,7 @@ const Select: FC<Props> = ({
             className={cn(
               "w-full pr-6 pl-8 py-4 rounded-xl outline-none duration-200",
               {
-                "ring-1 ring-[transparent] focus:ring-[#11BE86]":
+                "ring-1 ring-[transparent] focus:ring-purple-primary":
                   !activeVariant?.colors,
                 "pl-14": activeVariant?.image,
               }
@@ -67,7 +67,7 @@ const Select: FC<Props> = ({
       </div>
       {isOpen && (
         <div className="absolute top-16 w-full left-0 rounded-xl border  p-4 bg-white shadow-lg">
-          <p className="font-semibold text-xs text-[#5D5D5F]">
+          <p className="font-semibold text-xs text-muted-foreground">
             {subPlaceholder}
           </p>
           <ul className="flex gap-2 flex-col mt-2">

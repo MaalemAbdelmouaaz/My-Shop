@@ -18,7 +18,7 @@ const SearchSuggestions: FC<Props> = ({ suggestions, query }) => {
 
     return parts.map((part, index) =>
       part.toLowerCase() === query.toLowerCase() ? (
-        <strong key={index} className="text-orange-background">
+                        <strong key={index} className="text-purple-primary">
           {part}
         </strong>
       ) : (
@@ -37,7 +37,7 @@ const SearchSuggestions: FC<Props> = ({ suggestions, query }) => {
           {suggestions.map((sugg) => (
             <li
               key={sugg.name}
-              className="w-full h-20 px-6 cursor-pointer hover:bg-[#f5f5f5] flex items-center gap-x-2"
+              className="w-full h-20 px-6 cursor-pointer hover:bg-gray-light flex items-center gap-x-2"
               onClick={() => handlePush(sugg.link)}
             >
               <Image

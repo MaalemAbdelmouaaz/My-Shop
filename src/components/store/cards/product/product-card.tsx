@@ -30,7 +30,7 @@ export default function ProductCard({ product }: { product: ProductType }) {
     <div>
       <div
         className={cn(
-          "group w-[190px] min-[480px]:w-[225px] relative transition-all duration-75 bg-white ease-in-out p-4 rounded-t-3xl border border-transparent hover:shadow-xl hover:border-border",
+          "group w-[190px] min-[480px]:w-[225px] relative transition-all duration-75 bg-card ease-in-out p-4 rounded-t-3xl border border-transparent hover:shadow-xl hover:border-border",
           {
             "": true,
           }
@@ -54,7 +54,7 @@ export default function ProductCard({ product }: { product: ProductType }) {
                   count={5}
                   size={24}
                   color="#F5F5F5"
-                  activeColor="#FFD804"
+                  activeColor="#FFD700"
                   value={rating}
                   isHalf
                   edit={false}
@@ -62,11 +62,15 @@ export default function ProductCard({ product }: { product: ProductType }) {
                 <div className="text-xs text-main-secondary">{sales} sold</div>
               </div>
             )}
-            {/* Price */}
-            <ProductPrice sizes={sizes} isCard handleChange={() => {}} />
+            {/* Price with News Ticker Effect */}
+            <div className="relative overflow-hidden h-8 mt-1">
+              <div className="group-hover:animate-scroll-text absolute inset-0 flex items-center whitespace-nowrap transition-all duration-300">
+                <ProductPrice sizes={sizes} isCard handleChange={() => {}} />
+              </div>
+            </div>
           </Link>
         </div>
-        <div className="hidden group-hover:block absolute -left-[1px] bg-white border border-t-0  w-[calc(100%+2px)] px-4 pb-4 rounded-b-3xl shadow-xl z-30 space-y-2">
+        <div className="hidden group-hover:block absolute -left-[1px] bg-card border border-t-0  w-[calc(100%+2px)] px-4 pb-4 rounded-b-3xl shadow-xl z-30 space-y-2">
           {/* Variant switcher */}
           <VariantSwitcher
             images={variantImages}

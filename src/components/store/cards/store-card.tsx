@@ -59,7 +59,7 @@ const StoreCard: FC<Props> = ({ store, checkForFollowing }) => {
   };
   return (
     <div className="w-full">
-      <div className="bg-[#f5f5f5] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5 rounded-xl py-3 px-4">
+              <div className="bg-gray-light flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5 rounded-xl py-3 px-4">
         <div className="flex">
           <Link href={`/store/${url}`}>
             <Image

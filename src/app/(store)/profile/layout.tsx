@@ -4,7 +4,7 @@ import ProfileSidebar from "@/components/store/layout/profile-sidebar/sidebar";
 
 export default function ProfileLayout({ children }: { children: ReactNode }) {
   return (
-    <div className="min-h-screen bg-[#f5f5f5] ">
+    <div className="min-h-screen bg-gray-light ">
       <Header />
       <div className="max-w-container mx-auto flex flex-col lg:flex-row gap-4 p-2 ">
         <ProfileSidebar />

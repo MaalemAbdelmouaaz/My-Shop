@@ -53,7 +53,7 @@ const ShippingAddressCard: FC<Props> = ({
             className={cn(
               "leading-8 inline-block w-5 h-5 rounded-full bg-white border border-gray-300",
               {
-                "bg-orange-background border-none flex items-center justify-center":
+                "bg-purple-primary border-none flex items-center justify-center":
                   isSelected,
               }
             )}

@@ -149,7 +149,7 @@ export default function ReviewDetails({
                             count={5}
                             size={40}
                             color="#e2dfdf"
-                            activeColor="#FFD804"
+                            activeColor="#FFD700"
                             value={field.value}
                             onChange={field.onChange}
                             isHalf

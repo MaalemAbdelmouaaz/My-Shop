@@ -33,15 +33,29 @@ export default function CategoriesMenu({
       className="relative w-10 h-10 xl:w-[256px] z-50"
       // onMouseEnter={() => toggleMenu(true)}
       // onMouseLeave={() => toggleMenu(false)}
+      onClick={() => toggleMenu(!open)}
+      role="button"
+      aria-expanded={open}
+      aria-haspopup="listbox"
+      tabIndex={0}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          toggleMenu(!open);
+        }
+        if (e.key === "Escape") {
+          toggleMenu(false);
+        }
+      }}
     >
       {/* Trigger and Dropdown Container */}
       <div className="relative">
         {/* Trigger */}
         <div
           className={cn(
-            "w-12 xl:w-[256px] h-12 rounded-full -translate-y-1 xl:translate-y-0 xl:h-11 bg-[#535353] text-white text-[20px] relative flex items-center cursor-pointer transition-all duration-100 ease-in-out",
+            "w-12 xl:w-[256px] h-12 rounded-full -translate-y-1 xl:translate-y-0 xl:h-11 bg-gray-dark text-white text-[20px] relative flex items-center cursor-pointer transition-all duration-100 ease-in-out",
             {
-              "w-[256px] bg-[#f5f5f5] text-black text-base rounded-t-[20px] rounded-b-none scale-100":
+              "w-[256px] bg-gray-light text-black text-base rounded-t-[20px] rounded-b-none scale-100":
                 open,
               "scale-75": !open,
             }
@@ -72,7 +86,7 @@ export default function CategoriesMenu({
         {/* Dropdown */}
         <ul
           className={cn(
-            "absolute top-10 left-0 w-[256px] bg-[#f5f5f5] shadow-lg transition-all duration-100 ease-in-out scrollbar overflow-y-auto",
+            "absolute top-10 left-0 w-[256px] bg-gray-light shadow-lg transition-all duration-100 ease-in-out scrollbar overflow-y-auto",
             {
               "max-h-[523px] opacity-100": dropdownVisible, // Show dropdown
               "max-h-0 opacity-0": !dropdownVisible, // Hide dropdown
@@ -83,7 +97,7 @@ export default function CategoriesMenu({
             <Link
               key={category.id}
               href={`/browse?category=${category.url}`}
-              className="text-[#222]"
+                              className="text-main-primary"
             >
               <li className="relative flex items-center m-0 p-3 pl-6 hover:bg-white">
                 <Image

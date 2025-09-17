@@ -30,35 +30,11 @@ export default function Featured({ products }: { products: SimpleProduct[] }) {
   return (
     <div className="relative rounded-md overflow-hidden">
       <div
-        className="w-full flex items-center bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url(/assets/images/ads/featured.webp)" }}
+        className="w-full h-[400px] flex items-center bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: "url(/assets/images/ads/featured.jpeg)" }}
       >
         {/* Coupon */}
-        <Link href="/">
-          <div className="w-52 px-3 float-left relative h-[190px]">
-            <div className="flex flex-col justify-center items-center h-[103px]">
-              <h3 className="leading-5 font-bold my-1 text-white w-full">
-                Wecome Newcomers!
-              </h3>
-              <p className="text-sm w-full text-white">
-                Enjoy shopping made easy like nothing before
-              </p>
-            </div>
-            <div
-              className="absolute w-[192px] h-[55px] pl-[14px] text-white overflow-hidden pr-[45px] bottom-[35px] 
-              text-left bg-contain bg-no-repeat"
-              style={{ backgroundImage: "url(/assets/images/ads/coupon.gif)" }}
-            >
-              <h3 className="text-[20px] leading-6 mt-[11px] mb-1 text-white w-full">
-                use &#39;MHAJJI&#39;
-              </h3>
-
-              <p className="overflow-hidden overflow-ellipsis w-full text-xs -translate-y-1">
-                for 87% off
-              </p>
-            </div>
-          </div>
-        </Link>
+      
         {/* Product swiper */}
         <div
           className={is1700px ? "ml-10" : ""}

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import UserMenu from "./user-menu/user-menu";
 import Cart from "./cart";
 import DownloadApp from "./download-app";
@@ -26,12 +27,30 @@ export default function Header() {
   }
 
   return (
-    <div className="bg-gradient-to-r from-slate-500 to-slate-800">
+    <div className="bg-gradient-to-r from-purple-primary to-purple-secondary">
       <div className="h-full w-full lg:flex text-white px-4 lg:px-12">
         <div className="flex lg:w-full lg:flex-1 flex-col lg:flex-row gap-3 py-3">
           <div className="flex items-center justify-between">
-            <Link href="/">
-              <h1 className="font-extrabold text-3xl font-mono">MyShop</h1>
+            {/* Background logo - disabled for now */}
+            {/* <span 
+              className="absolute -left-16 top-1/2 transform -translate-y-1/3 bg-contain bg-no-repeat bg-center opacity-30 z-0 filter brightness-50 w-48 h-48"
+              style={{
+                backgroundImage: "url('/assets/icons/logo-1.png')",
+                backgroundSize: 'contain',
+                backgroundPosition: 'center',
+              }}
+            ></span> */}
+            <Link href="/" className="flex items-center gap-x-2">
+              <Image 
+                src="/assets/icons/cube_only.png" 
+                alt="VEE MALL Logo" 
+                width={56} 
+                height={56}
+                className="w-14 h-14 object-contain"
+              />
+              <h1 className="font-extrabold text-3xl font-mono">
+                VEE MALL
+              </h1>
             </Link>
             <div className="flex lg:hidden">
               <UserMenu />

@@ -1084,7 +1084,7 @@ const ProductDetails: FC<ProductDetailsProps> = ({
                               >
                                 <span>{country.label}</span>
                                 <span
-                                  className="cursor-pointer hover:text-red-500"
+                                  className="cursor-pointer hover:text-purple-primary"
                                   onClick={() =>
                                     handleDeleteCountryFreeShipping(index)
                                   }

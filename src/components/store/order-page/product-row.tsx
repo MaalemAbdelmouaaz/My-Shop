@@ -2,6 +2,7 @@ import ProductStatusTag from "@/components/shared/product-status";
 import { ProductStatus } from "@/lib/types";
 import { OrderItem } from "@prisma/client";
 import Image from "next/image";
+import { formatPrice } from "@/lib/currency";
 
 export default function ProductRow({ product }: { product: OrderItem }) {
   return (
@@ -38,7 +39,7 @@ export default function ProductRow({ product }: { product: OrderItem }) {
                 <p className="font-medium text-base leading-7 text-black ">
                   Price:&nbsp;
                   <span className="text-blue-primary">
-                    ${product.price.toFixed(2)}
+                    {formatPrice(product.price)}
                   </span>
                 </p>
                 <p className="font-medium text-base leading-7 text-black ">

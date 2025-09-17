@@ -11,7 +11,7 @@ const ReviewsSort: FC<Props> = ({ sort, setSort }) => {
   return (
     <div className="group w-[120px]">
       {/* Trigger */}
-      <button className="text-main-primary hover:text-[#fd384f] text-sm py-0.5 text-center inline-flex items-center">
+      <button className="text-main-primary hover:text-purple-primary text-sm py-0.5 text-center inline-flex items-center">
         Sort by&nbsp;
         {sort?.orderBy === "latest"
           ? "latest"

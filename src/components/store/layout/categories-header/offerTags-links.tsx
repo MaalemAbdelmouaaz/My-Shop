@@ -44,9 +44,9 @@ export default function OfferTagsLinks({
             key={tag.id}
             href={`/browse?offer=${tag.url}`}
             className={cn(
-              "font-bold text-center text-white px-4 leading-10 rounded-[20px] hover:bg-[#ffffff33]",
+              "font-bold text-center text-white px-4 leading-10 rounded-[20px] transition-all duration-300 ease-in-out transform hover:scale-105 hover:bg-white/30 hover:shadow-lg active:scale-95 active:bg-white/40",
               {
-                "text-orange-background": i === 0,
+                "text-white bg-white/25 font-extrabold shadow-md": i === 0,
               }
             )}
           >

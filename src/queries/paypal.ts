@@ -42,7 +42,7 @@ export const createPayPalPayment = async (orderId: string) => {
           purchase_units: [
             {
               amount: {
-                currency_code: "USD",
+                currency_code: "DZD",
                 value: order.total.toFixed(2).toString(),
               },
             },

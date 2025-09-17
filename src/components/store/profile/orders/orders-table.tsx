@@ -14,6 +14,7 @@ import { useEffect, useState } from "react";
 import Pagination from "../../shared/pagination";
 import { getUserOrders } from "@/queries/profile";
 import OrderTableHeader from "./order-table-header";
+import { formatPrice } from "@/lib/currency";
 
 export default function OrdersTable({
   orders,
@@ -145,7 +146,7 @@ export default function OrdersTable({
                             status={order.orderStatus as OrderStatus}
                           />
                         </td>
-                        <td className="p-4">${order.total.toFixed(2)}</td>
+                        <td className="p-4">{formatPrice(order.total)}</td>
                         <td className="p-4">
                           <Link href={`/order/${order.id}`}>
                             <span className="text-xs text-blue-primary cursor-pointer hover:underline">

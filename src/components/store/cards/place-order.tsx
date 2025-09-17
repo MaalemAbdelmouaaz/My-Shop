@@ -11,6 +11,7 @@ import { cn } from "@/lib/utils";
 import { CartWithCartItemsType } from "@/lib/types";
 import ApplyCouponForm from "../forms/apply-coupon";
 import { PulseLoader } from "react-spinners";
+import { formatPrice } from "@/lib/currency";
 
 interface Props {
   shippingAddress: ShippingAddress | null;
@@ -60,16 +61,16 @@ const PlaceOrderCard: FC<Props> = ({
     <div className="sticky top-4 lg:ml-5 lg:w-[380px] max-h-max">
       <div className="relative py-4 px-6 bg-white">
         <h1 className="text-gray-900 text-2xl font-bold mb-4">Summary</h1>
-        <Info title="Subtotal" text={`${subTotal.toFixed(2)}`} />
-        <Info title="Shipping Fees" text={`+${shippingFees.toFixed(2)}`} />
-        <Info title="Taxes" text="+0.00" />
+        <Info title="Subtotal" text={formatPrice(subTotal)} />
+        <Info title="Shipping Fees" text={`+${formatPrice(shippingFees)}`} />
+        <Info title="Taxes" text={`+${formatPrice(0)}`} />
         {coupon && (
           <Info
             title={`Coupon (${coupon.code}) (-${coupon.discount}%)`}
-            text={`-$${discountedAmount.toFixed(2)}`}
+            text={`-${formatPrice(discountedAmount)}`}
           />
         )}
-        <Info title="Total" text={`+${total.toFixed(2)}`} isBold noBorder />
+        <Info title="Total" text={`+${formatPrice(total)}`} isBold noBorder />
       </div>
       <div className="mt-2">
         {coupon ? (

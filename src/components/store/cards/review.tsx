@@ -39,7 +39,7 @@ export default function ReviewCard({
             count={5}
             size={24}
             color="#F5F5F5"
-            activeColor="#FFD804"
+            activeColor="#FFD700"
             value={review.rating}
             isHalf
             edit={false}

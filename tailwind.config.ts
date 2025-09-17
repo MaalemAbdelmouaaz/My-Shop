@@ -63,8 +63,18 @@ const config = {
           border: "#ffe6e7",
         },
         main: {
-          primary: "#191919",
+          primary: "#2B2B2B",
           secondary: "#757575",
+        },
+        purple: {
+          primary: "#7E3FF2",
+          secondary: "#A480F2",
+          light: "#E0DDE3",
+        },
+        gray: {
+          dark: "#2B2B2B",
+          light: "#F2F2F2",
+          medium: "#E0DDE3",
         },
       },
       borderRadius: {
@@ -81,10 +91,15 @@ const config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        "scroll-text": {
+          "0%": { transform: "translateX(0%)" },
+          "100%": { transform: "translateX(-100%)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "scroll-text": "scroll-text 4s linear infinite",
       },
       backgroundImage: {
         home: "url(/public/assets/images/home-wallpaper.webp)",

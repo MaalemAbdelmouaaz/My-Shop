@@ -9,8 +9,8 @@ const BoxesIcon = () => {
     >
       <defs>
         <linearGradient id="boxGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="#4275E4" />
-          <stop offset="100%" stopColor="#A1BCF4" />
+          <stop offset="0%" stopColor="#5B1FC7" />
+          <stop offset="100%" stopColor="#7A3FC7" />
         </linearGradient>
       </defs>
       <svg

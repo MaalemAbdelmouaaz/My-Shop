@@ -14,6 +14,7 @@ import { Expand } from "lucide-react";
 import { useModal } from "@/providers/modal-provider";
 import CustomModal from "@/components/dashboard/shared/custom-modal";
 import StoreOrderSummary from "@/components/dashboard/shared/store-order-summary";
+import { formatPrice } from "@/lib/currency";
 
 export const columns: ColumnDef<StoreOrderType>[] = [
   {
@@ -78,7 +79,7 @@ export const columns: ColumnDef<StoreOrderType>[] = [
     accessorKey: "total",
     header: "Total",
     cell: ({ row }) => {
-      return <span>${row.original.total.toFixed(2)}</span>;
+      return <span>{formatPrice(row.original.total)}</span>;
     },
   },
   {

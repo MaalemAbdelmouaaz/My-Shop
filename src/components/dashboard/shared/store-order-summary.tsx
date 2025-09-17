@@ -14,6 +14,7 @@ import { Gruppo } from "next/font/google";
 import Image from "next/image";
 import ProductStatusTag from "@/components/shared/product-status";
 import ProductStatusSelect from "../forms/product-status-select";
+import { formatPrice } from "@/lib/currency";
 
 interface Props {
   group: StoreOrderType;
@@ -165,14 +166,14 @@ const StoreOrderSummary: FC<Props> = ({ group }) => {
               <div className="text-sm">
                 <p className="font-normal text-gray-500">
                   Price :&nbsp;
-                  <span className="ms-1">${product.price.toFixed(2)}</span>
+                  <span className="ms-1">{formatPrice(product.price)}</span>
                 </p>
               </div>
               <div className="text-sm">
                 <p className="font-normal text-gray-500">
                   Shipping Fee :{" "}
                   <span className="ms-1">
-                    ${product.shippingFee.toFixed(2)}
+                    {formatPrice(product.shippingFee)}
                   </span>
                 </p>
               </div>
@@ -186,7 +187,7 @@ const StoreOrderSummary: FC<Props> = ({ group }) => {
               />
               <div className="grid place-items-center">
                 <h5 className="font-semibold text-3xl leading-10 mt-3">
-                  ${product.totalPrice.toFixed(2)}
+                  {formatPrice(product.totalPrice)}
                 </h5>
               </div>
             </div>

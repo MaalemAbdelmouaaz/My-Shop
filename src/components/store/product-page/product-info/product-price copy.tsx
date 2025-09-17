@@ -65,7 +65,7 @@ const ProductPrice: FC<Props> = ({ sizeId, sizes, isCard, handleChange }) => {
 
     return (
       <div>
-        <div className="text-orange-primary inline-block font-bold leading-none mr-2.5">
+        <div className="text-purple-primary inline-block font-bold leading-none mr-2.5">
           <span
             className={cn("inline-block text-4xl text-nowrap", {
               "text-lg": isCard,
@@ -75,7 +75,7 @@ const ProductPrice: FC<Props> = ({ sizeId, sizes, isCard, handleChange }) => {
           </span>
         </div>
         {!sizeId && !isCard && (
-          <div className="text-orange-background text-xs leading-4 mt-1">
+          <div className="text-purple-primary text-xs leading-4 mt-1">
             <span>Note : Select a size to see the exact price</span>
           </div>
         )}
@@ -93,18 +93,18 @@ const ProductPrice: FC<Props> = ({ sizeId, sizes, isCard, handleChange }) => {
 
     return (
       <div>
-        <div className="text-orange-primary inline-block font-bold leading-none mr-2.5">
+        <div className="text-purple-primary inline-block font-bold leading-none mr-2.5">
           <span className="inline-block text-4xl">
             ${discountedPrice.toFixed(2)}
           </span>
         </div>
         {selectedSize.price !== discountedPrice && (
-          <span className="text-[#999] inline-block text-xl font-normal leading-6 mr-2 line-through">
+          <span className="text-muted-foreground inline-block text-xl font-normal leading-6 mr-2 line-through">
             ${selectedSize.price.toFixed(2)}
           </span>
         )}
         {selectedSize.discount > 0 && (
-          <span className="inline-block text-orange-seconadry text-xl leading-6">
+          <span className="inline-block text-purple-secondary text-xl leading-6">
             {selectedSize.discount}% off
           </span>
         )}

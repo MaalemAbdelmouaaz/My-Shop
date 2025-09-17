@@ -68,7 +68,7 @@ export default function Search() {
         )}
         <button
           type="submit"
-          className="border-[1px] rounded-[20px] w-[56px] h-8 mt-1 mr-1 mb-0 ml-0 bg-gradient-to-r from-slate-500 to bg-slate-600 grid place-items-center cursor-pointer"
+                      className="border-[1px] rounded-[20px] w-[56px] h-8 mt-1 mr-1 mb-0 ml-0 bg-gradient-to-r from-purple-primary to-purple-secondary grid place-items-center cursor-pointer"
         >
           <SearchIcon />
         </button>

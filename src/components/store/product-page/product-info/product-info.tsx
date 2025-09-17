@@ -98,12 +98,12 @@ const ProductInfo: FC<Props> = ({
             count={5}
             size={24}
             color="#F5F5F5"
-            activeColor="#FFD804"
+            activeColor="#FFD700"
             value={rating}
             isHalf
             edit={false}
           />
-          <Link href="#reviews" className="text-[#ffd804] hover:underline">
+                      <Link href="#reviews" className="text-purple-primary hover:underline">
             (
             {numReviews === 0
               ? "No review yet"

@@ -71,7 +71,7 @@ export default function FiltersHeader({
         <div className="text-sm font-bold">Filter ({queriesLength})</div>
         {queriesLength > 0 && (
           <div
-            className="text-xs text-orange-background cursor-pointer hover:underline"
+            className="text-xs text-purple-primary cursor-pointer hover:underline"
             onClick={() => handleClearQueries()}
           >
             Clear All

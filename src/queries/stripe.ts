@@ -4,6 +4,7 @@ import { db } from "@/lib/db";
 import { currentUser } from "@clerk/nextjs/server";
 import { PaymentIntent } from "@stripe/stripe-js";
 import Stripe from "stripe";
+import { getPaymentConfig } from "@/lib/config";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
   apiVersion: "2024-11-20.acacia",
@@ -28,7 +29,7 @@ export const createStripePaymentIntent = async (orderId: string) => {
 
     const paymentIntent = await stripe.paymentIntents.create({
       amount: Math.round(order.total * 100),
-      currency: "usd",
+      currency: getPaymentConfig().stripe.currency,
       automatic_payment_methods: { enabled: true },
     });
 

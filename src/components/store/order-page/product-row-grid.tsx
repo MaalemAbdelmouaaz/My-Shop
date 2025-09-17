@@ -2,6 +2,7 @@ import ProductStatusTag from "@/components/shared/product-status";
 import { ProductStatus } from "@/lib/types";
 import { OrderItem } from "@prisma/client";
 import Image from "next/image";
+import { formatPrice } from "@/lib/currency";
 
 export default function ProductRowGrid({ product }: { product: OrderItem }) {
   return (
@@ -45,7 +46,7 @@ export default function ProductRowGrid({ product }: { product: OrderItem }) {
                   Price
                 </p>
                 <p className="lg:mt-4 font-medium text-sm leading-7 text-blue-primary">
-                  ${product.price.toFixed(2)}
+                  {formatPrice(product.price)}
                 </p>
               </div>
             </div>

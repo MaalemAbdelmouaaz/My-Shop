@@ -3,8 +3,8 @@ import { headers } from "next/headers";
 import { WebhookEvent, clerkClient } from "@clerk/nextjs/server";
 import { User } from "@prisma/client";
 import { db } from "@/lib/db";
+
 export async function POST(req: Request) {
-  /*
   // You can find this in the Clerk Dashboard -> Webhooks -> choose the endpoint
   const WEBHOOK_SECRET = process.env.WEBHOOK_SECRET;
 
@@ -49,58 +49,77 @@ export async function POST(req: Request) {
       status: 400,
     });
   }
-  // When user is created or updated
-  if (evt.type === "user.created" || evt.type === "user.updated") {
-    // Parse the incoming event data
-    const data = JSON.parse(body).data;
 
-    // Create a user object with relevant properties
-    const user: Partial<User> = {
-      id: data.id,
-      name: `${data.first_name} ${data.last_name}`,
-      email: data.email_addresses[0].email_address,
-      picture: data.image_url,
-    };
-    // If user data is invalid, exit the function
-    if (!user) return;
+  try {
+    // When user is created or updated
+    if (evt.type === "user.created" || evt.type === "user.updated") {
+      // Parse the incoming event data
+      const data = JSON.parse(body).data;
 
-    // Upsert user in the database (update if exists, create if not)
-    const dbUser = await db.user.upsert({
-      where: {
-        email: user.email,
-      },
-      update: user,
-      create: {
-        id: user.id!,
-        name: user.name!,
-        email: user.email!,
-        picture: user.picture!,
-        role: user.role || "USER", // Default role to "USER" if not provided
-      },
-    });
+      // Create a user object with relevant properties
+      const user: Partial<User> = {
+        id: data.id,
+        name: `${data.first_name} ${data.last_name}`,
+        email: data.email_addresses[0].email_address,
+        picture: data.image_url,
+      };
 
-    // Update user's metadata in Clerk with the role information
-    const client = await clerkClient();
-    await client.users.updateUserMetadata(data.id, {
-      privateMetadata: {
-        role: dbUser.role, // Default role to "USER" if not present in dbUser
-      },
-    });
+      // If user data is invalid, exit the function
+      if (!user) return new Response("Invalid user data", { status: 400 });
+
+      // Upsert user in the database (update if exists, create if not)
+      const dbUser = await db.user.upsert({
+        where: {
+          email: user.email,
+        },
+        update: user,
+        create: {
+          id: user.id!,
+          name: user.name!,
+          email: user.email!,
+          picture: user.picture!,
+          role: user.role || "USER", // Default role to "USER" if not provided
+        },
+      });
+
+      // Update user's metadata in Clerk with the role information
+      const client = await clerkClient();
+      await client.users.updateUserMetadata(data.id, {
+        privateMetadata: {
+          role: dbUser.role, // Default role to "USER" if not present in dbUser
+        },
+      });
+    }
+
+    // When user is deleted
+    if (evt.type === "user.deleted") {
+      // Parse the incoming event data to get the user ID
+      const userId = JSON.parse(body).data.id;
+
+      try {
+        // Check if user exists before attempting to delete
+        const user = await db.user.findUnique({
+          where: { id: userId },
+        });
+
+        if (user) {
+          // Delete the user from the database based on the user ID
+          await db.user.delete({
+            where: {
+              id: userId,
+            },
+          });
+        } else {
+          console.log(`User ${userId} not found in database, skipping delete`);
+        }
+      } catch (error) {
+        console.error(`Error deleting user ${userId}:`, error);
+      }
+    }
+
+    return new Response("", { status: 200 });
+  } catch (error) {
+    console.error("Error processing webhook:", error);
+    return new Response("Internal server error", { status: 500 });
   }
-
-  // When user is deleted
-  if (evt.type === "user.deleted") {
-    // Parse the incoming event data to get the user ID
-    const userId = JSON.parse(body).data.id;
-
-    // Delete the user from the database based on the user ID
-    await db.user.delete({
-      where: {
-        id: userId,
-      },
-    });
-  }
-
-  return new Response("", { status: 200 });
-  */
 }

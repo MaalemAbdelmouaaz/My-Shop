@@ -37,16 +37,15 @@ export default async function HomePage() {
       <CategoriesHeader />
       <div className="relative w-full">
         <Sideline />
-        <div className="relative w-[calc(100%-40px)] h-full bg-[#e3e3e3]">
+        <div className="relative w-[calc(100%-40px)] h-full bg-gray-medium">
           <div className="max-w-[1600px] mx-auto min-h-screen p-4">
             {/* Main */}
-            <div className="w-full grid gap-2 min-[1170px]:grid-cols-[1fr_350px] min-[1465px]:grid-cols-[200px_1fr_350px]">
+            <div className="w-full grid gap-2 min-[1170px]:grid-cols-[1fr_350px] min-[1465px]:grid-cols-[350px_1fr_350px]">
               {/* Left */}
               <div
-                className="cursor-pointer hidden min-[1465px]:block bg-cover bg-no-repeat rounded-md"
+                className="cursor-pointer hidden min-[1465px]:block bg-cover bg-center bg-no-repeat rounded-md"
                 style={{
-                  backgroundImage:
-                    "url(/assets/images/ads/winter-sports-clothing.jpg)",
+                  backgroundImage: "url(/assets/images/ads/spoo.jpeg)",
                 }}
               />
               {/* Middle */}
@@ -54,12 +53,14 @@ export default async function HomePage() {
                 {/* Main swiper */}
                 <HomeMainSwiper />
                 {/* Featured card */}
-                <Featured
-                  products={products_featured.filter(
-                    (product): product is SimpleProduct =>
-                      "variantSlug" in product
-                  )}
-                />
+                <div className="h-[400px]">
+                  <Featured
+                    products={products_featured.filter(
+                      (product): product is SimpleProduct =>
+                        "variantSlug" in product
+                    )}
+                  />
+                </div>
               </div>
               {/* Right */}
               <div className="h-full">
@@ -72,16 +73,16 @@ export default async function HomePage() {
               </div>
             </div>
             {/* Animated deals */}
-            <div className="mt-2 hidden min-[915px]:block">
+            {/*<div className="mt-2 hidden min-[915px]:block">
               <AnimatedDeals
                 products={products_best_deals.filter(
                   (product): product is SimpleProduct =>
                     "variantSlug" in product
                 )}
               />
-            </div>
+            </div> */}
             <div className="mt-10 space-y-10">
-              <div className="bg-white rounded-md">
+              <div className="bg-card rounded-md">
                 <MainSwiper products={products_super_deals} type="curved">
                   <div className="mb-4 pl-4 flex items-center justify-between">
                     <Image
@@ -98,12 +99,12 @@ export default async function HomePage() {
 
               <div>
                 {/* Header */}
-                <div className="text-center h-[32px] leading-[32px] text-[24px] font-extrabold text-[#222] flex justify-center">
-                  <div className="h-[1px] flex-1 border-t-[2px] border-t-[hsla(0,0%,59.2%,.3)] my-4 mx-[14px]" />
+                <div className="text-center h-[32px] leading-[32px] text-[24px] font-extrabold text-main-primary flex justify-center">
+                  <div className="h-[1px] flex-1 border-t-[2px] border-t-purple-primary/20 my-4 mx-[14px]" />
                   <span>More to love</span>
-                  <div className="h-[1px] flex-1 border-t-[2px] border-t-[hsla(0,0%,59.2%,.3)] my-4 mx-[14px]" />
+                  <div className="h-[1px] flex-1 border-t-[2px] border-t-purple-primary/20 my-4 mx-[14px]" />
                 </div>
-                <div className="mt-7 bg-white justify-center flex flex-wrap min-[1530px]:grid min-[1530px]:grid-cols-7 p-4 pb-16 rounded-md">
+                <div className="mt-7 bg-card justify-center flex flex-wrap min-[1530px]:grid min-[1530px]:grid-cols-7 p-4 pb-16 rounded-md">
                   {products.map((product, i) => (
                     <ProductCard key={i} product={product} />
                   ))}

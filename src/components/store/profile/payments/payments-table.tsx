@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import Pagination from "../../shared/pagination";
 import { getUserPayments } from "@/queries/profile";
 import PaymentTableHeader from "./payment-table-header";
+import { formatPrice } from "@/lib/currency";
 
 export default function PaymentsTable({
   payments,
@@ -106,7 +107,7 @@ export default function PaymentsTable({
                         </td>
                         <td>{payment.paymentInetntId}</td>
                         <td>{payment.paymentMethod}</td>
-                        <td>${amount.toFixed(2)}</td>
+                        <td>{formatPrice(amount)}</td>
                         <td>{payment.status}</td>
                         <td className="p-4">
                           <Link href={`/order/${payment.orderId}`}>

@@ -7,6 +7,7 @@ import ProductRow from "./product-row";
 import { useMediaQuery } from "react-responsive";
 import ProductRowGrid from "./product-row-grid";
 import { cn } from "@/lib/utils";
+import { formatPrice } from "@/lib/currency";
 
 export default function OrderGroupTable({
   group,
@@ -119,13 +120,13 @@ export default function OrderGroupTable({
           <p className="font-medium text-lg text-gray-900 px-6 py-3 max-lg:text-center">
             Subtotal:
             <span className="text-gray-500 ms-1">
-              ${group.subTotal.toFixed(2)}
+              {formatPrice(group.subTotal)}
             </span>
           </p>
           <p className="font-medium text-lg text-gray-900 px-6 py-3 max-lg:text-center">
             Shipping Fees:
             <span className="text-gray-500 ms-1">
-              ${group.shippingFees.toFixed(2)}
+              {formatPrice(group.shippingFees)}
             </span>
           </p>
           {group.couponId && (
@@ -133,7 +134,7 @@ export default function OrderGroupTable({
               Coupon ({coupon?.code})
               <span className="text-gray-500 ms-1">(-{coupon?.discount}%)</span>
               <span className="text-gray-500 ms-1">
-                (-${discountedAmount.toFixed(2)})
+                (-{formatPrice(discountedAmount)})
               </span>
             </p>
           )}
@@ -141,7 +142,7 @@ export default function OrderGroupTable({
         <div>
           <p className="font-semibold text-xl text-black py-4">
             Total price:
-            <span className="text-blue-primary ms-1">${total.toFixed(2)}</span>
+            <span className="text-blue-primary ms-1">{formatPrice(total)}</span>
           </p>
         </div>
       </div>

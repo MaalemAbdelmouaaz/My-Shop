@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
+import { getPaymentConfig } from "@/lib/config";
 
 if (process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY === undefined) {
   throw new Error("NEXT_PUBLIC_STRIPE_PUBLIC_KEY is not defined");
@@ -20,7 +21,7 @@ export default function StripeWrapper({
       options={{
         mode: "payment",
         amount: Math.round(amount * 100),
-        currency: "usd",
+        currency: getPaymentConfig().stripe.currency,
       }}
     >
       {children}

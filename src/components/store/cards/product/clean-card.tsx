@@ -59,6 +59,7 @@ export default function ProductCardClean({
               count={5}
               size={18}
               color="#e2dfdf"
+              activeColor="#FFD700"
               value={product.rating}
               isHalf
               edit={false}

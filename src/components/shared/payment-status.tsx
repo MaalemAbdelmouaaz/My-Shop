@@ -25,8 +25,8 @@ const paymentStatusStyles: {
     label: "Failed",
   },
   [PaymentStatus.Declined]: {
-    bgColor: "bg-orange-100",
-    textColor: "text-orange-800 ",
+          bgColor: "bg-purple-light",
+      textColor: "text-purple-primary",
     label: "Declined",
   },
   [PaymentStatus.Cancelled]: {

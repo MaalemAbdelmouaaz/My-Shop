@@ -22,6 +22,7 @@ import {
   useState,
 } from "react";
 import toast from "react-hot-toast";
+import { formatPrice } from "@/lib/currency";
 
 interface Props {
   product: CartProductType;
@@ -192,14 +193,14 @@ const CartProduct: FC<Props> = ({
                 <span className="leading-8 inline-flex p-0.5 cursor-pointer ">
                   <span
                     className={cn(
-                      "leading-8 w-5 h-5 rounded-full bg-white border border-gray-300 flex items-center justify-center hover:border-orange-background",
+                      "leading-8 w-5 h-5 rounded-full bg-white border border-gray-300 flex items-center justify-center hover:border-purple-primary",
                       {
-                        "border-orange-background": selected,
+                        "border-purple-primary": selected,
                       }
                     )}
                   >
                     {selected && (
-                      <span className="bg-orange-background  w-5 h-5 rounded-full flex items-center justify-center">
+                      <span className="bg-purple-primary  w-5 h-5 rounded-full flex items-center justify-center">
                         <Check className="w-3.5 text-white mt-0.5" />
                       </span>
                     )}
@@ -240,13 +241,13 @@ const CartProduct: FC<Props> = ({
                   className="mr-2.5 cursor-pointer inline-block"
                   onClick={() => handleaddToWishlist()}
                 >
-                  <Heart className="w-4 hover:stroke-orange-seconadry" />
+                  <Heart className="w-4 hover:stroke-purple-primary" />
                 </span>
                 <span
                   className="cursor-pointer inline-block"
                   onClick={() => removeFromCart(product)}
                 >
-                  <Trash className="w-4 hover:stroke-orange-seconadry" />
+                  <Trash className="w-4 hover:stroke-purple-primary" />
                 </span>
               </div>
             </div>
@@ -268,7 +269,7 @@ const CartProduct: FC<Props> = ({
               {stock > 0 ? (
                 <div>
                   <span className="inline-block break-all">
-                    ${price.toFixed(2)} x {quantity} = ${totalPrice.toFixed(2)}
+                    {formatPrice(price)} x {quantity} = {formatPrice(totalPrice)}
                   </span>
                 </div>
               ) : (
@@ -305,34 +306,33 @@ const CartProduct: FC<Props> = ({
             </div>
             {/* Shipping info */}
             {stock > 0 && (
-              <div className="mt-1 text-xs text-[#999] cursor-pointer">
+              <div className="mt-1 text-xs text-muted-foreground cursor-pointer">
                 <div className="flex items-center mb-1">
                   <span>
-                    <Truck className="w-4 inline-block text-[#01A971]" />
+                    <Truck className="w-4 inline-block text-purple-primary" />
                     {shippingInfo.totalFee > 0 ? (
-                      <span className="text-[#01A971] ml-1">
+                      <span className="text-purple-primary ml-1">
                         {shippingMethod === "ITEM" ? (
                           <>
-                            ${shippingInfo.initialFee} (first item)
+                            {formatPrice(shippingInfo.initialFee)} (first item)
                             {quantity > 1
-                              ? `+ 
-                              ${quantity - 1} item(s) x $${extraShippingFee} 
+                              ? ` + 
+                              ${quantity - 1} item(s) x ${formatPrice(extraShippingFee)} 
                               (additional items)`
                               : " x 1"}
-                            = ${shippingInfo.totalFee.toFixed(2)}
+                            = {formatPrice(shippingInfo.totalFee)}
                           </>
                         ) : shippingMethod === "WEIGHT" ? (
                           <>
-                            ${shippingFee} x {shippingInfo.weight}kg x&nbsp;
-                            {quantity} {quantity > 1 ? "items" : "item"} = $
-                            {shippingInfo.totalFee.toFixed(2)}
+                            {formatPrice(shippingFee)} x {shippingInfo.weight}kg x&nbsp;
+                            {quantity} {quantity > 1 ? "items" : "item"} = {formatPrice(shippingInfo.totalFee)}
                           </>
                         ) : (
-                          <>Fixed Fee : ${shippingInfo.totalFee.toFixed(2)}</>
+                          <>Fixed Fee : {formatPrice(shippingInfo.totalFee)}</>
                         )}
                       </span>
                     ) : (
-                      <span className="text-[#01A971] ml-1">Free Delivery</span>
+                      <span className="text-purple-primary ml-1">Free Delivery</span>
                     )}
                   </span>
                 </div>

@@ -31,8 +31,8 @@ const statusStyles: {
     label: "Shipped",
   },
   [OrderStatus.OutforDelivery]: {
-    bgColor: "bg-orange-100 dark:bg-orange-500/10",
-    textColor: "text-orange-800 dark:text-orange-500",
+          bgColor: "bg-purple-light dark:bg-purple-500/10",
+      textColor: "text-purple-primary dark:text-purple-primary",
     label: "Out for Delivery",
   },
   [OrderStatus.Delivered]: {

@@ -7,6 +7,11 @@ import {
   Text,
   View,
 } from "@react-pdf/renderer";
+
+// Simple currency formatter for PDF (can't use React context in PDF)
+const formatPriceForPdf = (price: number) => {
+  return `${price.toFixed(2)} دج`;
+};
 export const generateOrderPDFBlob = async (
   order: OrderFulltType
 ): Promise<Blob> => {
@@ -98,9 +103,9 @@ export const generateOrderPDFBlob = async (
             <Text style={styles.groupHeader}>Group {groupIndex + 1}</Text>
             <Text>Store: {group.store.name}</Text>
             <Text>Coupon Used: {group.coupon?.code || "None"}</Text>
-            <Text>Shipping Fees: ${group.shippingFees.toFixed(2)}</Text>
-            <Text>Group Subtotal: ${group.subTotal.toFixed(2)}</Text>
-            <Text>Group Total: ${group.total.toFixed(2)}</Text>
+            <Text>Shipping Fees: {formatPriceForPdf(group.shippingFees)}</Text>
+            <Text>Group Subtotal: {formatPriceForPdf(group.subTotal)}</Text>
+            <Text>Group Total: {formatPriceForPdf(group.total)}</Text>
             <Text>Items Count: {group._count.items}</Text>
 
             {/* Items Table */}
@@ -117,9 +122,9 @@ export const generateOrderPDFBlob = async (
                     {item.name}
                   </Text>
                   <Text style={styles.tableCell}>{item.quantity}</Text>
-                  <Text style={styles.tableCell}>${item.price.toFixed(2)}</Text>
+                  <Text style={styles.tableCell}>{formatPriceForPdf(item.price)}</Text>
                   <Text style={styles.tableCell}>
-                    ${item.totalPrice.toFixed(2)}
+                    {formatPriceForPdf(item.totalPrice)}
                   </Text>
                 </View>
               ))}
@@ -128,9 +133,9 @@ export const generateOrderPDFBlob = async (
         ))}
         {/* Order Totals */}
         <View>
-          <Text>Order Subtotal: ${order.subTotal.toFixed(2)}</Text>
-          <Text>Order Shipping Fees: ${order.shippingFees.toFixed(2)}</Text>
-          <Text>Order Total: ${order.total.toFixed(2)}</Text>
+          <Text>Order Subtotal: {formatPriceForPdf(order.subTotal)}</Text>
+          <Text>Order Shipping Fees: {formatPriceForPdf(order.shippingFees)}</Text>
+          <Text>Order Total: {formatPriceForPdf(order.total)}</Text>
         </View>
       </Page>
     </Document>

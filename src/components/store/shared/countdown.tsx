@@ -54,7 +54,7 @@ const Countdown: FC<Props> = ({ targetDate, home_style }) => {
   }, [targetDate]);
   return (
     <div
-      className={cn("text-orange-background leading-4", {
+      className={cn("text-purple-primary leading-4", {
         "text-white": home_style,
       })}
     >
@@ -67,9 +67,9 @@ const Countdown: FC<Props> = ({ targetDate, home_style }) => {
         <div className="inline-block">
           <span
             className={cn(
-              "bg-orange-background text-white min-w-5 p-0 rounded-[2px] inline-block min-h-4 text-center",
+              "bg-purple-primary text-white min-w-5 p-0 rounded-[2px] inline-block min-h-4 text-center",
               {
-                "p-2 bg-white text-black mr-1": home_style,
+                "p-2 bg-card text-foreground mr-1": home_style,
               }
             )}
           >
@@ -78,9 +78,9 @@ const Countdown: FC<Props> = ({ targetDate, home_style }) => {
           <span className="mx-1">:</span>
           <span
             className={cn(
-              "bg-orange-background text-white min-w-5 p-0 rounded-[2px] inline-block min-h-4 text-center",
+              "bg-purple-primary text-white min-w-5 p-0 rounded-[2px] inline-block min-h-4 text-center",
               {
-                "p-2 bg-white text-black mr-1": home_style,
+                "p-2 bg-card text-foreground mr-1": home_style,
               }
             )}
           >
@@ -89,9 +89,9 @@ const Countdown: FC<Props> = ({ targetDate, home_style }) => {
           <span className="mx-1">:</span>
           <span
             className={cn(
-              "bg-orange-background text-white min-w-5 p-0 rounded-[2px] inline-block min-h-4 text-center",
+              "bg-purple-primary text-white min-w-5 p-0 rounded-[2px] inline-block min-h-4 text-center",
               {
-                "p-2 bg-white text-black mr-1": home_style,
+                "p-2 bg-card text-foreground mr-1": home_style,
               }
             )}
           >
@@ -100,9 +100,9 @@ const Countdown: FC<Props> = ({ targetDate, home_style }) => {
           <span className="mx-1">:</span>
           <span
             className={cn(
-              "bg-orange-background text-white min-w-5 p-0 rounded-[2px] inline-block min-h-4 text-center",
+              "bg-purple-primary text-white min-w-5 p-0 rounded-[2px] inline-block min-h-4 text-center",
               {
-                "p-2 bg-white text-black mr-1": home_style,
+                "p-2 bg-card text-foreground mr-1": home_style,
               }
             )}
           >
