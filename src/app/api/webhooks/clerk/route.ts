@@ -6,6 +6,7 @@ import { db } from "@/lib/db";
 
 export async function POST(req: Request) {
   // You can find this in the Clerk Dashboard -> Webhooks -> choose the endpoint
+  /*
   const WEBHOOK_SECRET = process.env.WEBHOOK_SECRET;
 
   if (!WEBHOOK_SECRET) {
@@ -118,8 +119,10 @@ export async function POST(req: Request) {
     }
 
     return new Response("", { status: 200 });
+    
   } catch (error) {
     console.error("Error processing webhook:", error);
     return new Response("Internal server error", { status: 500 });
   }
+    */
 }
